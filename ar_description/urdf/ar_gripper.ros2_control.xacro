@@ -25,12 +25,14 @@
       <joint name="gripper_jaw2_joint">
         <param name="mimic">gripper_jaw1_joint</param>
         <param name="multiplier">1</param>
-        <state_interface name="position">
-          <param name="initial_value">0.0</param>
-        </state_interface>
-        <state_interface name="velocity">
-          <param name="initial_value">0.0</param>
-        </state_interface>
+        <xacro:unless value="${plugin_name == 'ign_ros2_control/IgnitionSystem'}">
+          <state_interface name="position">
+            <param name="initial_value">0.0</param>
+          </state_interface>
+          <state_interface name="velocity">
+            <param name="initial_value">0.0</param>
+          </state_interface>
+        </xacro:unless>
       </joint>
 
     </ros2_control>
