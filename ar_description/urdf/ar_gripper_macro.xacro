@@ -69,6 +69,13 @@
       </inertial>
     </link>
 
+    <link name="gripper_grasp_point"/>
+    <joint name="gripper_grasp_point_joint" type="fixed">
+      <origin xyz="0.0 0.0 0.055" rpy="0.0 0.0 0.0" />
+      <child link="gripper_grasp_point"/>
+      <parent link="ee_link"/>
+    </joint>
+
     <joint name="gripper_jaw1_joint" type="prismatic">
       <origin xyz="0.0 -0.036 0" rpy="0.0 0.0 0.0"/>
       <parent link="gripper_base_link"/>

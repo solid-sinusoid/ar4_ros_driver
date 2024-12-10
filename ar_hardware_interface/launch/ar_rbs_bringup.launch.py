@@ -22,20 +22,23 @@ def launch_setup(context, *args, **kwargs):
         launch_arguments={
             "with_gripper": "true",
             "robot_type": "ar4",
-            "description_package": "ar_description",
-            "description_file": "ar_gazebo.urdf.xacro",
+            "description_package": "ar_moveit_config",
+            "description_file": "fake_ar.urdf.xacro",
             "robot_name": "ar4",
-            "use_moveit": "true",
+            "use_moveit": "false",
             "moveit_config_package": "ar_moveit_config",
             "moveit_config_file": "ar.srdf.xacro",
             "use_sim_time": "true",
             "use_controllers": "true",
-            "scene_config_file": "/home/narmak/ar3_ws/src/ar4_ros_driver/ar_description/config/ar_gazebo_scene_description.yaml",
+            "scene_config_file": "",
             "base_link_name": "base_link",
             "ee_link_name": "ee_link",
             "control_space": "task",
             "control_strategy": "position",
-            "interactive": "false"
+            "interactive": "true",
+            "use_rbs_utils": "true",
+            "real_robot": "true",
+            "assembly_config_name": "board_pick_and_place",
         }.items(),
     )
 

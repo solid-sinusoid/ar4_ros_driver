@@ -93,7 +93,7 @@ def generate_launch_description():
     ompl_planning_pipeline_config["ompl"].update(ompl_planning_yaml)
 
     # Trajectory Execution Configuration
-    controllers_yaml = load_yaml("ar_moveit_config", "config/controllers.yaml")
+    controllers_yaml = load_yaml("ar_moveit_config", "config/moveit_controllers.yaml")
 
     moveit_controllers = {
         "moveit_simple_controller_manager":

@@ -6,14 +6,14 @@ camera:
       - 0.05
       - 10.0
     enable: true
-    height: 1080
-    width: 1920
+    height: 480
+    width: 640
     horizontal_fov: 1.0471975511965976
     image_format: R8G8B8
     name: robot_camera
     noise_mean: null
     noise_stddev: null
-    publish_color: true
+    publish_color: false
     publish_depth: false
     publish_points: false
     random_pose_focal_point_z_offset: 0.0
@@ -74,8 +74,8 @@ objects:
       - 0.0
       - 0.0
     position: !tuple
-      - 0.1
-      - 0.33
+      - -0.1
+      - -0.40
       - 0.1
     randomize:
       count: 0
@@ -109,8 +109,8 @@ objects:
       - 0.0
       - 0.0
     position: !tuple
-      - 0.1
-      - 0.30
+      - -0.1
+      - -0.37
       - 0.1
     randomize:
       count: 0
@@ -142,8 +142,8 @@ objects:
       - 0.0
       - 0.0
     position: !tuple
-      - 0.1
-      - 0.27
+      - -0.1
+      - -0.34
       - 0.1
     randomize:
       count: 0
@@ -172,7 +172,7 @@ objects:
       - 0.0
     position: !tuple
       - 0.0
-      - 0.3
+      - -0.37
       - 0.01
     randomize:
       count: 0
@@ -226,8 +226,8 @@ robot:
   spawn_quat_xyzw: !tuple
     - 0.0
     - 0.0
-    - 1.0
     - 0.0
+    - 1.0
   urdf_string: ""
   with_gripper: true
 terrain:
@@ -245,7 +245,7 @@ terrain:
     - 0
     - 0
     - 1
-  type: flat
+  type: random_flat
   ambient: !tuple
     - 0.2
     - 0.2

@@ -45,7 +45,7 @@ def generate_launch_description():
     ar_model_config = LaunchConfiguration("ar_model")
 
     initial_joint_controllers = PathJoinSubstitution([
-        FindPackageShare("ar_hardware_interface"), "config", "controllers.yaml"
+        FindPackageShare("ar_description"), "config", "controllers.yaml"
     ])
 
     robot_description_content = Command([
@@ -100,21 +100,25 @@ def generate_launch_description():
         ],
     )
 
-    # Gazebo nodes
+
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            [FindPackageShare("gazebo_ros"), "/launch",
-             "/gazebo.launch.py"]), )
+            PathJoinSubstitution(
+                [FindPackageShare('ros_gz_sim'), 'launch', 'gz_sim.launch.py']
+            )
+        ),
+        launch_arguments=[('gz_args', '-r -v 4 empty.sdf')],
+    )
 
     # Spawn robot
-    gazebo_spawn_robot = Node(
-        package="gazebo_ros",
-        executable="spawn_entity.py",
-        name="spawn_ar",
-        arguments=[
-            "-entity", "ar", "-topic", "robot_description", "-timeout", "60"
-        ],
-        output="screen",
+
+    ignition_spawn_entity = Node(
+        package='ros_gz_sim',
+        executable='create',
+        output='screen',
+        arguments=['-topic', "/robot_description",
+                   '-name', 'ar',
+                   '-allow_renaming', 'true'],
     )
 
     return LaunchDescription([
@@ -124,5 +128,5 @@ def generate_launch_description():
         initial_joint_controller_spawner_started,
         gripper_joint_controller_spawner_started,
         gazebo,
-        gazebo_spawn_robot,
+        ignition_spawn_entity,
     ])
